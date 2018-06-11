@@ -17,14 +17,31 @@ plugins {
 // Define the main class for the application
 mainClassName = 'App'
 
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url "https://repository.cloudera.com/artifactory/cloudera-repos"
+    }
+}
+
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:23.0'
+    // https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common
+    compile group: 'org.apache.hadoop', name: 'hadoop-common', version: '2.6.0-cdh5.14.2'
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    testCompile group: 'com.h2database', name: 'h2', version: '1.4.197'
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.18.0'
-
+    // https://mvnrepository.com/artifact/org.powermock/powermock-core
+    testCompile group: 'org.powermock', name: 'powermock-core', version: '2.0.0-beta.5'
+    // https://mvnrepository.com/artifact/org.powermock/powermock-api-mockito
+    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.0-beta.5'
+    // https://mvnrepository.com/artifact/org.powermock/powermock-module-junit4
+    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.0-beta.5'
 }
 
 // In this section you declare where to find the dependencies of your project

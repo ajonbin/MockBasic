@@ -1,0 +1,3 @@
+tenantid,sid,receivetimestamp,sampletimestamp,timezone,name,sampletimestampid,parent,type,ancestor,city,country
+germany.com,13448,1527655007985,1527655007985,UTC,NULL,2018053009,NULL,NULL,NULL,Prague,Czech
+india.com,10011,1527655007927,1527655007927,UTC,NULL,2018053009,NULL,NULL,NULL,shimoga,India

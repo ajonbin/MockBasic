@@ -1,3 +1,7 @@
+package com.ajonbin.mock;
+
+import com.ajonbin.mock.DatabaseManager;
+import com.ajonbin.mock.ETLJob;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -6,7 +10,9 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import static org.junit.Assert.*;
+import java.sql.SQLException;
+
+import static junit.framework.TestCase.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.when;
@@ -24,14 +30,7 @@ public class ETLJobTest {
 	}
 
 	@Test
-	public void testReal(){
-		DatabaseManager databaseManager = new DatabaseManager();
-		ETLJob etlJob = new ETLJob(databaseManager);
-		etlJob.runJobs();
-	}
-
-	@Test
-	public  void testWithMock(){
+	public  void testWithMock() throws Exception {
 		//Mock Configurations
 
 		//connectToDb
@@ -41,7 +40,7 @@ public class ETLJobTest {
 				System.out.println("Mock connectToDb() with: " + invocation.getArgument(0));
 				return null;
 			}
-		}).when(databaseManagerMock).connectToDb(any(String.class));
+		}).when(databaseManagerMock).connectToHive(any(String.class));
 
 		//excuteCmd
 		//Lambda way !! Compare to upper new Answer() {...}
